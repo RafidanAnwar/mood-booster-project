@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
-}
+/* src/App.css - PILIHAN B: MODERN GLASS */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  padding: 1rem;
+
+  /* BARU: Background gradient warna-warni yang cerah */
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
 }
 
-.App-link {
-  color: #61dafb;
+/* --- BARU: GAYA KARTU KACA --- */
+.glass-card {
+  /* Efek Kaca */
+  background: rgba(255, 255, 255, 0.25);
+  /* Transparansi */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* Untuk browser Safari */
+
+  /* Tampilan */
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  /* Kita buat warna teks utama jadi gelap agar terbaca */
+  color: #1a1a1a;
 }
 
-@keyframes App-logo-spin {
+/* Mengatur header dan footer agar serasi */
+.glass-card .card-header,
+.glass-card .card-footer {
+  background: rgba(255, 255, 255, 0.15);
+  /* Sedikit beda transparansi */
+  border: none;
+}
+
+.glass-card .card-header {
+  border-radius: 15px 15px 0 0;
+  font-weight: bold;
+}
+
+.glass-card .card-footer {
+  border-radius: 0 0 15px 15px;
+}
+
+/* Membuat teks pesan lebih tebal agar mudah dibaca */
+.glass-card .card-text {
+  font-weight: 500;
+  color: #111;
+}
+
+/* Animasi Fade-in (Masih sama) */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(10px);
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
