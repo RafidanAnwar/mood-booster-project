@@ -103,7 +103,7 @@ function PetCard() {
     <div className="card shadow-lg border-0 rounded-4" style={{ width: '25rem' }}>
       
       <div className="fs-5 fw-bold text-center pt-4">
-        kalau hoki nemu kucing ireng
+        Kucing Random
       </div>
 
       <div className="card-body" style={{ minHeight: '350px' }}>
@@ -149,7 +149,7 @@ function PetCard() {
           onClick={fetchNewContent}
           disabled={loading}
         >
-          {loading ? 'Mencari...' : 'Ayo Coba cari 🙈'}
+          {loading ? 'Mencari...' : 'ganti gaya 🐈‍'}
         </button>
 
         {/* Kontainer untuk tombol share, HANYA MUNCUL jika tidak loading */}

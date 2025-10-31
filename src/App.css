@@ -1,58 +1,64 @@
-/* src/App.css - PILIHAN B: MODERN GLASS */
+/* src/App.css - PILIHAN B (Diperbarui): GLASSMORPHISM DENGAN KUCING GELEMBUNG */
 
+/* --- Container Utama --- */
 .App-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: 1rem;
-
-  /* BARU: Background gradient warna-warni yang cerah */
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: #1a1a2e;
+  /* Warna dasar solid */
+  overflow: hidden;
+  /* Penting agar partikel tidak keluar */
+  position: relative;
+  /* Penting untuk posisi partikel */
 }
 
-/* --- BARU: GAYA KARTU KACA --- */
+/* --- Gaya Kartu Glassmorphism (dari sebelumnya) --- */
 .glass-card {
-  /* Efek Kaca */
-  background: rgba(255, 255, 255, 0.25);
-  /* Transparansi */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  /* Untuk browser Safari */
-
-  /* Tampilan */
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-
-  /* Kita buat warna teks utama jadi gelap agar terbaca */
-  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.2);
+  /* Sedikit lebih transparan */
+  backdrop-filter: blur(12px);
+  /* Blur lebih kuat */
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  /* Sudut lebih membulat */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
+  /* Bayangan lebih dalam */
+  color: #f0f0f0;
+  /* Teks putih agar kontras */
+  z-index: 10;
+  /* Pastikan kartu di atas partikel */
+  position: relative;
+  /* Penting agar z-index bekerja */
 }
 
-/* Mengatur header dan footer agar serasi */
 .glass-card .card-header,
 .glass-card .card-footer {
-  background: rgba(255, 255, 255, 0.15);
-  /* Sedikit beda transparansi */
+  background: rgba(255, 255, 255, 0.1);
   border: none;
+  color: #f0f0f0;
+  /* Teks putih */
 }
 
 .glass-card .card-header {
-  border-radius: 15px 15px 0 0;
+  border-radius: 20px 20px 0 0;
   font-weight: bold;
 }
 
 .glass-card .card-footer {
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 20px 20px;
 }
 
-/* Membuat teks pesan lebih tebal agar mudah dibaca */
 .glass-card .card-text {
   font-weight: 500;
-  color: #111;
+  color: #f0f0f0;
+  /* Teks putih */
 }
 
-/* Animasi Fade-in (Masih sama) */
+/* --- Animasi Fade-in (Masih sama) --- */
 .fade-in {
   animation: fadeIn 0.8s ease-in-out;
 }
@@ -66,5 +72,143 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* --- Gaya & Animasi Gelembung Kucing --- */
+.bg-bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Pastikan di belakang kartu */
+  overflow: hidden;
+  pointer-events: none;
+  /* Penting agar tidak menghalangi interaksi mouse */
+}
+
+.bg-bubbles li {
+  position: absolute;
+  list-style: none;
+  display: flex;
+  /* Gunakan flexbox untuk centering gambar */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Sedikit highlight di belakang gambar */
+  animation: animateBubbles 25s linear infinite;
+  bottom: -160px;
+  /* Mulai dari bawah layar */
+  border-radius: 50%;
+  /* Membuat area gelembung bulat */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  /* Sedikit efek cahaya */
+}
+
+.bg-bubbles li img {
+  width: 100%;
+  /* Gambar mengisi penuh gelembung */
+  height: 100%;
+  object-fit: cover;
+  /* Pastikan gambar tidak terdistorsi */
+  border-radius: 50%;
+  /* Membuat gambar kucing bulat */
+  opacity: 0.9;
+  /* Sedikit transparan */
+}
+
+/* Variasi Ukuran dan Posisi Gelembung */
+/* Sesuaikan jumlah li:nth-child() ini dengan jumlah gambar kucing Anda */
+.bg-bubbles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.bg-bubbles li:nth-child(2) {
+  left: 10%;
+  width: 50px;
+  height: 50px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.bg-bubbles li:nth-child(3) {
+  left: 70%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 4s;
+}
+
+.bg-bubbles li:nth-child(4) {
+  left: 40%;
+  width: 90px;
+  height: 90px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.bg-bubbles li:nth-child(5) {
+  left: 65%;
+  width: 70px;
+  height: 70px;
+  animation-delay: 0s;
+}
+
+.bg-bubbles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.bg-bubbles li:nth-child(7) {
+  left: 35%;
+  width: 100px;
+  height: 100px;
+  animation-delay: 7s;
+}
+
+.bg-bubbles li:nth-child(8) {
+  left: 50%;
+  width: 45px;
+  height: 45px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.bg-bubbles li:nth-child(9) {
+  left: 20%;
+  width: 35px;
+  height: 35px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.bg-bubbles li:nth-child(10) {
+  left: 85%;
+  width: 120px;
+  height: 120px;
+  animation-delay: 11s;
+}
+
+
+@keyframes animateBubbles {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    /* Mulai dengan terlihat */
+    border-radius: 50%;
+    /* Mulai sudah bulat */
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    /* Menghilang di akhir */
+    border-radius: 50%;
   }
 }
